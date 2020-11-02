@@ -1,0 +1,55 @@
+﻿@*
+    //For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Moviely.ViewModels.MovieViewModel
+
+@{
+    string empty = "There is no movies to list at this moment";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4><b>List of @ViewBag.Title</b></h4>
+@if (Model.Movies.Count == 0)
+{
+    <p>@empty</p>
+}
+else
+{
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+            <li>&emsp; @movie.Name</li>
+        }
+    </ul>
+}
+
+@*
+    @{
+        var className = Model.Custormers.Count > 0 ? "popular" : null;
+    }
+
+
+    @model Moviely.ViewModels.RandomMovieViewModel
+
+    <h2 class=@className>@Model.Movie[0].Name</h2>
+    <br />
+
+    @if (Model.Custormers.Count == 0)
+    {
+        <p>No one has rented this movie before</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var customer in Model.Custormers)
+            {
+                <li>@customer.Name</li>
+            }
+        </ul>
+    }
+*@

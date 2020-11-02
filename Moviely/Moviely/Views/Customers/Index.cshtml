@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Moviely.ViewModels.CustomerViewModel
+
+@{
+    string empty = "There is no customers to list at this moment";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4><b>List of @ViewBag.Title</b></h4>
+@if (Model.Customers.Count == 0)
+{
+    <p>@empty</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+        <li>@Html.ActionLink(customer.Name, "Details", new { customer.Id })</li>
+        }
+    </ul>
+}
+
